@@ -43,3 +43,57 @@ console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+/*IMG*/
+const logoImg = document.getElementById('logo-img');
+logoImg.setAttribute("src",siteContent["images"]["logo-img"]);
+
+const ctaImg = document.querySelector("#cta-img");
+ctaImg.src=siteContent["images"]["cta-img"];
+
+const middleImg = document.getElementById("middle-img");
+middleImg.src = siteContent["images"]["accent-img"];
+
+/*Nav*/
+const aTags = document.querySelectorAll("header nav a")
+const navKeys = Object.keys(siteContent["nav"]);
+const navValues = Object.values(siteContent["nav"])
+for(let a = 0; a < aTags.length; a++){
+  aTags[a].classList.add("italic");
+  aTags[a].textContent = navValues[a];
+}
+
+/*MAIN CONTENT*/
+
+const theContentArray = Object.values(siteContent["ana-içerik"]);
+const theContentBody = document.querySelectorAll(".text-content");
+theContentBody.forEach((c,i) => {
+  c.querySelector("h4").textContent = theContentArray[i * 2];
+  c.querySelector("p").textContent = theContentArray[i * 2 + 1];
+})
+
+/*CONTACT*/
+const theContactArray = Object.values(siteContent["iletisim"]);
+console.log(theContactArray);
+const h4InContact = document.querySelector(".contact h4")
+h4InContact.textContent = theContactArray[0];
+const psInContact = document.querySelectorAll(".contact p")
+for(let i = 0; i < theContactArray.length-1; i++){
+  psInContact[i].textContent = theContactArray[i+1];
+}
+
+/*CTA*/
+
+const ctaH1 = document.querySelectorAll(".cta-text h1");
+ctaH1[0].textContent = siteContent["cta"]["h1"];
+
+const ctaButton = document.querySelector(".cta-text button");
+ctaButton.textContent = siteContent["cta"]["button"];
+
+/*Footer*/
+const link = document.querySelector("footer a");
+link.classList.add("bold");
+link.textContent=siteContent["footer"]["copyright"];
+
+
+
+
